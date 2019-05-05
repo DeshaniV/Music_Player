@@ -1,9 +1,12 @@
 package com.example.music;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -91,6 +94,18 @@ public class Home extends AppCompatActivity {
 
         ArrayAdapter<String> my_adap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,songs);
         My_song_list.setAdapter(my_adap);
+
+        My_song_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String song_name = My_song_list.getItemAtPosition(position).toString();
+                startActivity(new Intent(getApplicationContext(),Player.class)
+                .putExtra("Songs", My_songs).putExtra("Song_Name",song_name)
+                .putExtra("position",position));
+
+            }
+        });
 
     }
 
