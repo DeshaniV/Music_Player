@@ -17,21 +17,23 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.File;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     ListView My_song_list;
     String[] songs;
     int i;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         My_song_list = (ListView)findViewById(R.id.song_list);
 
         runtime_per();
     }
+
 
     public void runtime_per(){
         Dexter.withActivity(this)
@@ -91,4 +93,6 @@ public class MainActivity extends AppCompatActivity {
         My_song_list.setAdapter(my_adap);
 
     }
+
+
 }
